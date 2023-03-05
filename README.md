@@ -1,9 +1,9 @@
 # oci
 
-##OBJECTIVE:
+## OBJECTIVE:
 To make use of Oracle Free VMs to test MW apps.
 
-##SECTIONS:
+## SECTIONS:
 1. Set up your free Oracle Account
 2. Provision VM (via Terraform)
 3. Deployment 
