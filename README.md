@@ -82,7 +82,7 @@ The file should reside outside of the git repo directory, so that it does not ge
   . ~/tfvarsenv.sh
 ```
 
-### 2.3 Download the Terraform Providers.
+### 2.3 Download the Terraform provider(s).
 
 ```
   terraform init
@@ -90,7 +90,9 @@ The file should reside outside of the git repo directory, so that it does not ge
 
 ### 2.4 Perform Terraform pre-checks
 
-terraform plan
+```
+  terraform plan
+```
 
 ### 2.4 Executre Terraform Actions and take of the 'compute_instance_ip' IP address (this is the VM's IP Address)
 
