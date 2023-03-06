@@ -84,7 +84,9 @@ The file should reside outside of the git repo directory, so that it does not ge
 
 ### 2.3 Download the Terraform Providers.
 
-terraform init
+```
+  terraform init
+```
 
 ### 2.4 Perform Terraform pre-checks
 
