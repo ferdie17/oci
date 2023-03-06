@@ -33,11 +33,19 @@ Take note of the following values, as they will be needed for VM provisioning.
 
 
 ## 2. Provision VM (via Terraform)
-cd ~
-git clone https://github.com/ferdie17/oci.git
-cd oci
 
-create a tfvarsenv.sh file outside of the repo dir, place it outside of the git repo directory so that it does not get saved in the repo.
+### 2.1 Clone the GitHub repo
+
+```
+    cd ~
+    git clone https://github.com/ferdie17/oci.git
+    cd oci
+```
+
+Note: change the GitHub to the correct one.  Above is only an example.
+
+### 2.2 Create a script (tfvarsenv.sh) that defines the environment variables.  
+
 
 vi ../tfvarsenv.sh
 export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -57,10 +65,26 @@ export TF_VAR_instance_shape_config_memory_in_gbs=1
 export TF_VAR_operating_system="Oracle Linux"
 export TF_VAR_operating_system_version="8"
 
+
+create a tfvarsenv.sh file outside of the repo dir, place it outside of the git repo directory so that it does not get saved in the repo.
+
+
+### 2.3 Make the script (tfvarsenv.sh) executable, then execute it.
+
+
 chmod 755 ~/tfvarsenv.sh
 . ~/tfvarsenv.sh
+
+### 2.3 Download the Terraform Providers.
+
 terraform init
+
+### 2.4 Perform Terraform pre-checks
+
 terraform plan
+
+### 2.4 Executre Terraform Actions and take of the 'compute_instance_ip' IP address (this is the VM's IP Address)
+
 terraform apply --auto-approve
 
 Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
@@ -71,8 +95,15 @@ compute_instance_ip = "140.238.199.73"
 generated_private_key_pem = <sensitive>
 ang_ferdin@cloudshell:oci (ap-sydney-1)$ 
 
+### 2.5 Confirm that the VM is up and running.
+
+
 ssh opc@140.238.199.73
 exit
+
+Terraform 'main.tf' file will perform the following:
+
+See Apppendix A for the detail of Terraform 'main.tf' file.
 
 ## 3. Deployment (via Ansible)
 ###   3.1 Kafka
