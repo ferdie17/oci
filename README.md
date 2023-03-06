@@ -96,15 +96,20 @@ The file should reside outside of the git repo directory, so that it does not ge
 
 ### 2.4 Executre Terraform Actions and take of the 'compute_instance_ip' IP address (this is the VM's IP Address)
 
-terraform apply --auto-approve
+```
+  terraform apply --auto-approve
+```
 
-Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+Take note of the 'compute_instance_ip'.   This is the IP address of the VM.   In this case, it is "140.238.199.73"
 
-Outputs:
+```
+  Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
 
-compute_instance_ip = "140.238.199.73"
-generated_private_key_pem = <sensitive>
-ang_ferdin@cloudshell:oci (ap-sydney-1)$ 
+  Outputs:
+
+  compute_instance_ip = "140.238.199.73"
+  generated_private_key_pem = <sensitive>
+```
 
 ### 2.5 Confirm that the VM is up and running.
 
