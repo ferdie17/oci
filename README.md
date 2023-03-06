@@ -110,19 +110,6 @@ Take note of the 'compute_instance_ip'.   This is the IP address of the VM.   In
   generated_private_key_pem = <sensitive>
 ```
 
-### 2.5 Confirm that the VM is up and running.
-
-```
-  ssh opc@140.238.199.73
-  exit
-```
-
-
-
-
-
-
-
 Applying Terraform 'main.tf' file will perform the following:
 - Download provider "oci".
 - Create resource "oci_core_vcn" "vcn".
@@ -132,6 +119,13 @@ Applying Terraform 'main.tf' file will perform the following:
 - Create resource "oci_core_subnet" "subnet".
 - Create resource "tls_private_key" "compute_ssh_key".
 - Create resource "oci_core_instance" "instance".
+
+### 2.5 Confirm that the VM is up and running.
+
+```
+  ssh opc@140.238.199.73
+  exit
+```
 
 
 ## 3. Deployment (via Ansible)
