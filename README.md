@@ -1,14 +1,16 @@
 # OCI (Oracle Cloud Infrastructure)
 
 ## OBJECTIVE:
-Take advance  of Oracle Free VMs to test MW apps.
+Make use of Oracle Free VMs to test MW apps.
 
 ## SECTIONS:
 1. Set up your free Oracle Account
 2. Provision VM (via Terraform)
 3. Deployment   (via Ansible)
+
    3.1 Kafka
 4. Test
+
    4.1 Kafka
 5. References
 6. Appendices
