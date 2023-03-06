@@ -118,6 +118,11 @@ Take note of the 'compute_instance_ip'.   This is the IP address of the VM.   In
 ```
 
 
+
+
+
+
+
 Applying Terraform 'main.tf' file will perform the following:
 - Download provider "oci".
 - Create resource "oci_core_vcn" "vcn".
