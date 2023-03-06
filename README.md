@@ -10,8 +10,9 @@ Make use of Oracle Free VMs to test MW apps.
    3.1 Kafka
 4. Test
    4.1 Kafka
-
 5. References
+6. Appendices
+7. Notes
 
 ## 1. Set up your free Oracle Account
 
@@ -21,6 +22,17 @@ place it outside of the git repo directory so that it does not get saved in the 
 
 ## 3. Deployment 
 ###   3.1 Kafka
+    Add the host IP address to Ansible Inventory File.
+```
+    $ cat inventory 
+    [kafka]
+    152.67.98.24
+```
+
+    The Ansible playbook will do the following
+cat kafka.yml 
+    Execute the Ansible playbook
+ansible-playbook -i inventory kafka.yml
 
 ## 4. Test
 ###   4.1 Kafka
@@ -42,5 +54,7 @@ place it outside of the git repo directory so that it does not get saved in the 
 - https://kafka.apache.org/quickstart
 - https://tecadmin.net/install-apache-kafka-centos-8/
 
-## NOTES
+## 6. Appendices
+
+## 7. NOTES
 - Terraform and Ansible are pre-installed on Oracle CLoud Shell.
