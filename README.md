@@ -19,15 +19,15 @@ Make use of Oracle Free VMs to test MW apps.
 ## 1. Set up your free Oracle Account
 
 ### 1.1 Sign up for a free account in Oracle Cloud (https://signup.oraclecloud.com/)
-Please follow the instructions as found on the following page: https://docs.oracle.com/en/cloud/paas/content-cloud/administer/create-and-activate-oracle-cloud-account.html
+Please follow the instructions as found on the following page: https://docs.oracle.com/en/cloud/paas/content-cloud/administer/create-and-activate-oracle-cloud-account.html.
 
-Take note of the following values, as they will be needed for provisioning
+Take note of the following values, as they will be needed for VM provisioning.
 
-Tenancy and User ID
-https://pitstop.manageengine.com/portal/en/kb/articles/where-to-get-the-tenancy-s-ocid-and-user-s-ocid#:~:text=Open%20the%20navigation%20menu%2C%20under,copy%20it%20to%20your%20clipboard.
+- Tenancy and User ID
+  https://pitstop.manageengine.com/portal/en/kb/articles/where-to-get-the-tenancy-s-ocid-and-user-s-ocid#:~:text=Open%20the%20navigation%20menu%2C%20under,copy%20it%20to%20your%20clipboard.
 
-OCI API Private Key Path and Fingerprint
-https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm
+- OCI API Private Key Path and Fingerprint
+  https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm
 
 
 ## 2. Provision VM (via Terraform)
