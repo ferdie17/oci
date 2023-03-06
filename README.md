@@ -130,16 +130,19 @@ Applying Terraform 'main.tf' file will perform the following:
 
 
 ## 3. Deployment (via Ansible)
-###   3.1 Kafka
-    Add the host IP address to Ansible Inventory File.
+###   3.1 Inventory
+Add the host IP address to Ansible Inventory File.
 ```
     $ cat inventory 
     [kafka]
-    152.67.98.24
+    140.238.199.73
 ```
 
+###   3.2 Playbook (kafka.yml)
     The Ansible playbook will do the following
 cat kafka.yml 
+
+
     Execute the Ansible playbook
 ansible-playbook -i inventory kafka.yml
 
