@@ -139,7 +139,7 @@ Add the host IP address to Ansible Inventory File.
 ```
 
 ###   3.3 Playbook (kafka.yml)
-The Ansible playbook if executed, will do the following:
+The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
   NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
 - Install OpenJDK Java
@@ -158,7 +158,7 @@ The Ansible playbook if executed, will do the following:
 - Validate ZooKeeper and Kafka are listening on their respective ports (2181 and 9092)
 
 ###   3.3 Update the Playbook avariables if required.
-Update Ansible variables (kafka.yml) if required.
+Update the Ansible variables (kafka.yml) if required.
 ```
   vars:
     kafka_dir:   /opt/kafka
@@ -181,13 +181,16 @@ Update Ansible variables (kafka.yml) if required.
 
 ```    bin/kafka-topics.sh --list --bootstrap-server localhost:9092 ```
 
-    Using Kafka Consmer, create a message.
+    Using Kafka Consumer, create a message.
 ```    bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic ```
 
     Using Kafka Producer, read the message.
 ```    bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testTopic --from-beginning ```
 
 ## 5. Decommission
+```
+  terraform destroy --auto-approve
+```
 
 ## 6. References
 - https://kafka.apache.org/quickstart
