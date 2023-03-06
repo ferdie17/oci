@@ -72,14 +72,15 @@ Replace 'xxx...xxx' with the correct values.
   export TF_VAR_operating_system_version="8"
 ```
 
-The file should reside outside of the git repo directory, so that it does not get saved in the repo, as it contains confidentail info.
+The file should reside outside of the git repo directory, so that it does not get saved in the repo (it contains confidentail info).
 
 
 ### 2.3 Make the script (tfvarsenv.sh) executable, then execute it.
 
-
-chmod 755 ~/tfvarsenv.sh
-. ~/tfvarsenv.sh
+```
+  chmod 755 ~/tfvarsenv.sh
+  . ~/tfvarsenv.sh
+```
 
 ### 2.3 Download the Terraform Providers.
 
