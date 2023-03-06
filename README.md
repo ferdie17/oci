@@ -24,9 +24,11 @@ Please follow the instructions as found on the following page: https://docs.orac
 Take note of the following values, as they will be needed for VM provisioning.
 
 - Tenancy and User ID
+
   https://pitstop.manageengine.com/portal/en/kb/articles/where-to-get-the-tenancy-s-ocid-and-user-s-ocid#:~:text=Open%20the%20navigation%20menu%2C%20under,copy%20it%20to%20your%20clipboard.
 
 - OCI API Private Key Path and Fingerprint
+
   https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm
 
 
