@@ -13,8 +13,7 @@ Make use of Oracle Free VMs to test MW apps.
 
    4.1 Kafka
 5. References
-6. Appendices
-7. Notes
+6. Notes
 
 ## 1. Set up your free Oracle Account
 
@@ -129,7 +128,6 @@ Applying Terraform 'main.tf' file will perform the following:
 - Create resource "tls_private_key" "compute_ssh_key".
 - Create resource "oci_core_instance" "instance".
 
-See Apppendix A for the detail of Terraform 'main.tf' file.
 
 ## 3. Deployment (via Ansible)
 ###   3.1 Kafka
@@ -165,7 +163,5 @@ ansible-playbook -i inventory kafka.yml
 - https://kafka.apache.org/quickstart
 - https://tecadmin.net/install-apache-kafka-centos-8/
 
-## 6. Appendices
-
-## 7. NOTES
+## 6. NOTES
 - Terraform and Ansible are pre-installed on Oracle CLoud Shell.
