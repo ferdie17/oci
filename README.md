@@ -1,10 +1,17 @@
 # OCI
 
 ## OBJECTIVE:
-Make use of Oracle Free VMs to test MW apps.
+Take advance  of Oracle Free VMs to test MW apps.
 
 ## SECTIONS:
 1. Set up your free Oracle Account
+
+Follow
+https://docs.oracle.com/en/cloud/paas/content-cloud/administer/create-and-activate-oracle-cloud-account.html
+
+
+
+
 2. Provision VM (via Terraform)
 3. Deployment 
    3.1 Kafka
@@ -16,9 +23,50 @@ Make use of Oracle Free VMs to test MW apps.
 
 ## 1. Set up your free Oracle Account
 
+Sign up 
+https://signup.oraclecloud.com/
+
+
+
 ## 2. Provision VM (via Terraform)
-create a tfvars.env.sh file 
-place it outside of the git repo directory so that it does not get saved in the repo.
+cd ~
+git clone https://github.com/ferdie17/oci.git
+cd oci
+
+create a tfvars.env.sh file outside of the repo dir, place it outside of the git repo directory so that it does not get saved in the repo.
+
+export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TF_VAR_user_ocid=ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TF_VAR_private_key_path=~/.oci/oci_api_key.pem
+#export TF_VAR_private_key_password=<put-here-private-key-password>
+export TF_VAR_fingerprint=xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx
+export TF_VAR_region=ap-sydney-1
+export TF_VAR_compartment_ocid=ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+export TF_VAR_vcn_cidr_blocks=[\"10.1.0.0/16\"]
+export TF_VAR_subnet_cidr_block="10.1.20.0/24"
+export TF_VAR_ssh_public_key=~/.ssh/id_rsa.pub
+#export TF_VAR_instance_shape="VM.Standard.A1.Flex"
+export TF_VAR_instance_shape="VM.Standard.E2.1.Micro"
+export TF_VAR_instance_ocpus=1
+export TF_VAR_instance_shape_config_memory_in_gbs=1
+export TF_VAR_operating_system="Oracle Linux"
+export TF_VAR_operating_system_version="8"
+
+
+terraform init
+terraform plan
+terraform apply --auto-approve
+
+Apply complete! Resources: 6 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+compute_instance_ip = "140.238.199.73"
+generated_private_key_pem = <sensitive>
+ang_ferdin@cloudshell:oci (ap-sydney-1)$ 
+
+ssh opc@140.238.199.73
+exit
 
 ## 3. Deployment 
 ###   3.1 Kafka
