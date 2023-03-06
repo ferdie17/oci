@@ -21,7 +21,7 @@ Make use of Oracle Free VMs to test MW apps.
 ### 1.1 Sign up for a free account in Oracle Cloud (https://signup.oraclecloud.com/)
 Please follow the instructions as found on the following page: https://docs.oracle.com/en/cloud/paas/content-cloud/administer/create-and-activate-oracle-cloud-account.html.
 
-Take note of the following values, as they will be needed for VM provisioning.
+### 1.2 Take note of the following values, as they will be needed for VM provisioning.
 
 - Tenancy and User ID
 
@@ -30,6 +30,10 @@ Take note of the following values, as they will be needed for VM provisioning.
 - OCI API Private Key Path and Fingerprint
 
   https://docs.oracle.com/en-us/iaas/Content/API/Concepts/apisigningkey.htm
+
+- Compartment ID
+
+  https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/contactingsupport_topic-Finding_the_OCID_of_a_Compartment.htm
 
 
 ## 2. Provision VM (via Terraform)
@@ -42,31 +46,33 @@ Take note of the following values, as they will be needed for VM provisioning.
     cd oci
 ```
 
-Note: change the GitHub to the correct one.  Above is only an example.
+Note: change the GitHub URL to the correct one.  Above is only an example.
 
 ### 2.2 Create a script (tfvarsenv.sh) that defines the environment variables.  
 
+Replace 'xxx...xxx' with the correct values.
 
-vi ../tfvarsenv.sh
-export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-export TF_VAR_user_ocid=ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-export TF_VAR_private_key_path=~/.oci/oci_api_key.pem
-#export TF_VAR_private_key_password=<put-here-private-key-password>
-export TF_VAR_fingerprint=xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx
-export TF_VAR_region=ap-sydney-1
-export TF_VAR_compartment_ocid=ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-export TF_VAR_vcn_cidr_blocks=[\"10.1.0.0/16\"]
-export TF_VAR_subnet_cidr_block="10.1.20.0/24"
-export TF_VAR_ssh_public_key=~/.ssh/id_rsa.pub
-#export TF_VAR_instance_shape="VM.Standard.A1.Flex"
-export TF_VAR_instance_shape="VM.Standard.E2.1.Micro"
-export TF_VAR_instance_ocpus=1
-export TF_VAR_instance_shape_config_memory_in_gbs=1
-export TF_VAR_operating_system="Oracle Linux"
-export TF_VAR_operating_system_version="8"
+```
+  vi ../tfvarsenv.sh
+  export TF_VAR_tenancy_ocid=ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  export TF_VAR_user_ocid=ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  export TF_VAR_private_key_path=~/.oci/oci_api_key.pem
+  #export TF_VAR_private_key_password=<put-here-private-key-password> # ONLY NEEDED IF KEY IS PASSWORD-PROTECTED
+  export TF_VAR_fingerprint=xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx
+  export TF_VAR_region=ap-sydney-1
+  export TF_VAR_compartment_ocid=ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  export TF_VAR_vcn_cidr_blocks=[\"10.1.0.0/16\"]
+  export TF_VAR_subnet_cidr_block="10.1.20.0/24"
+  export TF_VAR_ssh_public_key=~/.ssh/id_rsa.pub
+  #export TF_VAR_instance_shape="VM.Standard.A1.Flex"
+  export TF_VAR_instance_shape="VM.Standard.E2.1.Micro"
+  export TF_VAR_instance_ocpus=1
+  export TF_VAR_instance_shape_config_memory_in_gbs=1
+  export TF_VAR_operating_system="Oracle Linux"
+  export TF_VAR_operating_system_version="8"
+```
 
-
-create a tfvarsenv.sh file outside of the repo dir, place it outside of the git repo directory so that it does not get saved in the repo.
+The file should reside outside of the git repo directory, so that it does not get saved in the repo, as it contains confidentail info.
 
 
 ### 2.3 Make the script (tfvarsenv.sh) executable, then execute it.
