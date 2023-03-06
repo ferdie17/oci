@@ -1,138 +1,133 @@
 ---
-  - name: Playbook
-    hosts: kafka
-    become: yes
+  - name:        Install Kafka
+    hosts:       kafka
+    become:      yes
     become_user: root
     remote_user: opc
     vars:
       kafka_dir: /opt/kafka
     tasks:
-#     - name: gather facts
+#     - name: Update all packages to the latest version.
 #       ansible.builtin.yum:
 #         name:  '*'
 #         state: latest
-#      - name: Install the Version 1.8 of OpenJDK Java
-#        ansible.builtin.yum:
-#          name:  java-1.8.0-openjdk
-#          state: installed
-#      - name: Ensure JAVA_HOME is in /etc/profile
-#        ansible.builtin.lineinfile:
-#          path:   /etc/profile
-#          regexp: 'JAVA_HOME='
-#          line:   export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
-#      - name: Ensure JRE_HOME is in /etc/profile
-#        ansible.builtin.lineinfile:
-#          path:   /etc/profile
-#          regexp: 'JRE_HOME='
-#          line:   export JRE_HOME=/usr/lib/jvm/jre
-##      - name: Download Apache Kafka
-##        get_url:
-##          url: https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
-##          dest: /tmp
-##          mode: 0644
-#      - name: Create a group 
-#        group:
-#          name:  kafka
-#          state: present
-#      - name: Create an user 
-#        user:
-#          name:  kafka
-#          state: present
-#          group: kafka
-#      - name: Create a Directory /opt/kafka
-#        become: yes
-#        file:
-#          path: "{{kafka_dir}}"
-#          state: directory
-#          mode: 0755
-#          owner: kafka
-#          group: kafka
-#       - name: Download Kafka and Unzip 
-#         become: yes
-#         become_user: kafka
-#         unarchive:
-#           src: https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
-#           dest: "{{kafka_dir}}"
-#           mode: 0755
-#           remote_src: yes
-#       - name: Move all the files to parent Directory
-#         become: yes
-#         become_user: kafka
-#         shell:
-#           mv {{kafka_dir}}/kafka_*/* {{kafka_dir}}/.
-#       - name: Update the log path
-#         become: yes
-#         become_user: kafka
-#         replace:
-#           path:    "{{kafka_dir}}/config/server.properties"
-#           regexp:  'log.dirs=(.+)'
-#           replace: 'log.dirs={{kafka_dir}}/logs'
-#           backup:  yes
-#       - name: Update the Java Heap Size for Kafka
-#         become: yes
-#         become_user: kafka
-#         replace:
-#           path: "{{kafka_dir}}/bin/kafka-server-start.sh"
-#           regexp: 'export KAFKA_HEAP_OPTS=(".+")'
-#           replace: 'export KAFKA_HEAP_OPTS="-Xmx256M -Xms256M"'
-#           backup: yes
-#       - name: Create a Service file for ZooKeeper with Copy module
-#         become: yes
-#         copy:
-#           dest: /etc/systemd/system/zookeeper.service
-#           content: |
-#             [Unit]
-#             Requires=network.target remote-fs.target
-#             After=network.target remote-fs.target
-#             [Service]
-#             Type=simple
-#             User=kafka
-#             ExecStart={{kafka_dir}}/bin/zookeeper-server-start.sh {{kafka_dir}}/config/zookeeper.properties
-#             ExecStop={{kafka_dir}}/bin/zookeeper-server-stop.sh
-#             Restart=on-abnormal
-#             [Install]
-#             WantedBy=multi-user.target
-#           mode: 0755
-#       - name: Create a Service file for Kafka with Copy module
-#         become: yes
-#         copy:
-#           dest: /etc/systemd/system/kafka.service
-#           content: |
-#             [Unit]
-#             Requires=zookeeper.service
-#             After=zookeeper.service
-#             [Service]
-#             Type=simple
-#             User=kafka
-#             ExecStart=/bin/sh -c '{{kafka_dir}}/bin/kafka-server-start.sh {{kafka_dir}}/config/server.properties > {{kafka_dir}}/kafkaservice.log 2>&1'
-#             ExecStop={{kafka_dir}}/bin/kafka-server-stop.sh
-#             Restart=on-abnormal
-#             [Install]
-#             WantedBy=multi-user.target
-#           mode: 0755
-#       - name: Start Services
-#         tags: startservices
-#         become: yes
-#         systemd:
-#           name: '{{item}}'
-#           state: started
-#           enabled: yes
-#         with_items:
-#           - "kafka"
-#           - "zookeeper"
-       - name: Validating if zookeeper is up and listening on port 2181
-         wait_for:
-           host: localhost
-           port: 2181
-           delay: 10
-           timeout: 30
-           state: started
-           msg: "Zookeeper not seem to be running"
-       - name: Validating if Kafka is up and listening on port 2181
-         wait_for:
-           host: localhost
-           port: 9092
-           delay: 10
-           timeout: 30
-           state: started
-           msg: "Zookeeper not seem to be running"
+      - name: Install the Version 1.8 of OpenJDK Java
+        ansible.builtin.yum:
+          name:  java-1.8.0-openjdk
+          state: installed
+      - name: Ensure JAVA_HOME is in /etc/profile
+        ansible.builtin.lineinfile:
+          path:   /etc/profile
+          regexp: 'JAVA_HOME='
+          line:   export JAVA_HOME=/usr/lib/jvm/jre-1.8.0-openjdk
+      - name: Ensure JRE_HOME is in /etc/profile
+        ansible.builtin.lineinfile:
+          path:   /etc/profile
+          regexp: 'JRE_HOME='
+          line:   export JRE_HOME=/usr/lib/jvm/jre
+      - name: Create a group 
+        group:
+          name:  kafka
+          state: present
+      - name: Create an user 
+        user:
+          name:  kafka
+          state: present
+          group: kafka
+      - name: Create a Directory /opt/kafka
+        become: yes
+        file:
+          path: "{{kafka_dir}}"
+          state: directory
+          mode: 0755
+          owner: kafka
+          group: kafka
+      - name: Download Kafka and Unzip 
+        become: yes
+        become_user: kafka
+        unarchive:
+          src: https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz
+          dest: "{{kafka_dir}}"
+          mode: 0755
+          remote_src: yes
+      - name: Move all the files to parent Directory
+        become: yes
+        become_user: kafka
+        shell:
+          mv -n {{kafka_dir}}/kafka_*/* {{kafka_dir}}/.
+      - name: Update the log path
+        become: yes
+        become_user: kafka
+        replace:
+          path:    "{{kafka_dir}}/config/server.properties"
+          regexp:  'log.dirs=(.+)'
+          replace: 'log.dirs={{kafka_dir}}/logs'
+          backup:  yes
+      - name: Update the Java Heap Size for Kafka
+        become: yes
+        become_user: kafka
+        replace:
+          path: "{{kafka_dir}}/bin/kafka-server-start.sh"
+          regexp: 'export KAFKA_HEAP_OPTS=(".+")'
+          replace: 'export KAFKA_HEAP_OPTS="-Xmx256M -Xms256M"'
+          backup: yes
+      - name: Create a Service file for ZooKeeper with Copy module
+        become: yes
+        copy:
+          dest: /etc/systemd/system/zookeeper.service
+          content: |
+            [Unit]
+            Requires=network.target remote-fs.target
+            After=network.target remote-fs.target
+            [Service]
+            Type=simple
+            User=kafka
+            ExecStart={{kafka_dir}}/bin/zookeeper-server-start.sh {{kafka_dir}}/config/zookeeper.properties
+            ExecStop={{kafka_dir}}/bin/zookeeper-server-stop.sh
+            Restart=on-abnormal
+            [Install]
+            WantedBy=multi-user.target
+          mode: 0755
+      - name: Create a Service file for Kafka with Copy module
+        become: yes
+        copy:
+          dest: /etc/systemd/system/kafka.service
+          content: |
+            [Unit]
+            Requires=zookeeper.service
+            After=zookeeper.service
+            [Service]
+            Type=simple
+            User=kafka
+            ExecStart=/bin/sh -c '{{kafka_dir}}/bin/kafka-server-start.sh {{kafka_dir}}/config/server.properties > {{kafka_dir}}/kafkaservice.log 2>&1'
+            ExecStop={{kafka_dir}}/bin/kafka-server-stop.sh
+            Restart=on-abnormal
+            [Install]
+            WantedBy=multi-user.target
+          mode: 0755
+      - name: Start Services
+        tags: startservices
+        become: yes
+        systemd:
+          name: '{{item}}'
+          state: started
+          enabled: yes
+        with_items:
+          - "kafka"
+          - "zookeeper"
+      - name: Validating if zookeeper is up and listening on port 2181
+        wait_for:
+          host: localhost
+          port: 2181
+          delay: 10
+          timeout: 30
+          state: started
+          msg: "Zookeeper does not seem to be running"
+      - name: Validating if Kafka is up and listening on port 9092
+        wait_for:
+          host: localhost
+          port: 9092
+          delay: 10
+          timeout: 30
+          state: started
+          msg: "Kafka does not seem to be running"
