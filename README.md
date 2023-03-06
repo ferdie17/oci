@@ -197,4 +197,4 @@ Update the Ansible variables (kafka.yml) if required.
 - https://tecadmin.net/install-apache-kafka-centos-8/
 
 ## 7. Notes
-- Terraform and Ansible are pre-installed on Oracle CLoud Shell.
+- Terraform and Ansible are pre-installed on Oracle Cloud Shell.
