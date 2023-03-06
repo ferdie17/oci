@@ -12,8 +12,9 @@ Make use of Oracle Free VMs to test MW apps.
 4. Test
 
    4.1 Kafka
-5. References
-6. Notes
+5. Decommission
+6. References
+7. Notes
 
 ## 1. Set up your free Oracle Account
 
@@ -71,7 +72,7 @@ Replace 'xxx...xxx' with the correct values.
   export TF_VAR_operating_system_version="8"
 ```
 
-The file should reside outside of the git repo directory, so that it does not get saved in the repo (it contains confidentail info).
+The file should reside outside of the git repo directory, so that it does not get saved in the repo (e.g. confidentail info).
 
 
 ### 2.3 Make the script (tfvarsenv.sh) executable, then execute it.
@@ -137,13 +138,38 @@ Add the host IP address to Ansible Inventory File.
     140.238.199.73
 ```
 
-###   3.2 Playbook (kafka.yml)
-    The Ansible playbook will do the following
-cat kafka.yml 
+###   3.3 Playbook (kafka.yml)
+The Ansible playbook if executed, will do the following:
+- Update all packages to the latest version.
+  NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
+- Install OpenJDK Java
+- Ensure JAVA_HOME is defined in /etc/profile
+- Ensure JRE_HOME is defined in /etc/profile
+- Create 'kafka' group account
+- Create 'kafka' user accounta 
+- Create Kafka home directory
+- Download Kafka and Unzip 
+- Move all the files to parent Directory
+- Update the log path
+- Update the Java Heap Size for Kafka
+  NOTEL for 1GB VM, reduce the heap size to 256MB
+- Create a Service files for ZooKeeper and Kafka
+- Start Services for ZooKeeper and Kafka
+- Validate ZooKeeper and Kafka are listening on their respective ports (2181 and 9092)
 
+###   3.3 Update the Playbook avariables if required.
+Update Ansible variables (kafka.yml) if required.
+```
+  vars:
+    kafka_dir:   /opt/kafka
+    kafka_src:   "https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz"
+    jdk_version: 1.8.0
+```
 
-    Execute the Ansible playbook
-ansible-playbook -i inventory kafka.yml
+###   3.4 Execute the Ansible playbook
+```
+  ansible-playbook -i inventory kafka.yml
+```
 
 ## 4. Test
 ###   4.1 Kafka
@@ -161,9 +187,11 @@ ansible-playbook -i inventory kafka.yml
     Using Kafka Producer, read the message.
 ```    bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testTopic --from-beginning ```
 
-## 5. References
+## 5. Decommission
+
+## 6. References
 - https://kafka.apache.org/quickstart
 - https://tecadmin.net/install-apache-kafka-centos-8/
 
-## 6. NOTES
+## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle CLoud Shell.
