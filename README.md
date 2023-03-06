@@ -113,11 +113,21 @@ Take note of the 'compute_instance_ip'.   This is the IP address of the VM.   In
 
 ### 2.5 Confirm that the VM is up and running.
 
+```
+  ssh opc@140.238.199.73
+  exit
+```
 
-ssh opc@140.238.199.73
-exit
 
-Terraform 'main.tf' file will perform the following:
+Applying Terraform 'main.tf' file will perform the following:
+- Download provider "oci".
+- Create resource "oci_core_vcn" "vcn".
+- Create resource "oci_core_internet_gateway" "internet_gateway".
+- Create resource "oci_core_route_table" "route_table".
+- Create resource "oci_core_security_list" "security_list".
+- Create resource "oci_core_subnet" "subnet".
+- Create resource "tls_private_key" "compute_ssh_key".
+- Create resource "oci_core_instance" "instance".
 
 See Apppendix A for the detail of Terraform 'main.tf' file.
 
