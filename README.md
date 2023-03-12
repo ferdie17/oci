@@ -195,7 +195,7 @@ Update the Ansible variables (kafka.yml) if required.
 ```
   ansible-playbook -i inventory kafka.yml
 ```
-####        3.4.1 Docker
+####        3.4.2 Docker
 ```
   ansible-playbook -i inventory docker.yml
 ```
@@ -215,6 +215,11 @@ Update the Ansible variables (kafka.yml) if required.
 
     Using Kafka Producer, read the message.
 ```    bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testTopic --from-beginning ```
+###   4.2 Docker
+    Verify Docker Compose is installed
+```    sudo docker compose version ```
+    Test Docker is working
+```    sudo docker run hello-world
 
 ## 5. Decommission
 ```
