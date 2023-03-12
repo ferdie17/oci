@@ -179,7 +179,8 @@ The Ansible playbook is defined to do the following:
 
 
 
-###   3.3 Update the Playbook avariables if required.
+###   3.3 Update the Playbook avariables 
+####        3.3.1 Kafka
 Update the Ansible variables (kafka.yml) if required.
 ```
   vars:
@@ -187,6 +188,7 @@ Update the Ansible variables (kafka.yml) if required.
     kafka_src:   "https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz"
     jdk_version: 1.8.0
 ```
+####        3.3.2 Kafka
 
 ###   3.4 Execute the Ansible playbook
 ```
