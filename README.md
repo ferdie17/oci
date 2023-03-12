@@ -207,24 +207,36 @@ Update the Ansible variables (kafka.yml) if required.
 
 Switch to default directory
 
+```
 cd /opt/kafka
+```
 
 Create a Kafka topic
+```
     bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testTopic
     bin/kafka-topics.sh --list --bootstrap-server localhost:9092 
+```
 
 Using Kafka Consumer, create a message.
+```
     bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic 
+```
 
 Using Kafka Producer, read the message.
+```
     bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic testTopic --from-beginning 
+```
 
 ###   4.2 Docker
 Verify Docker Compose is installed
+```
     sudo docker compose version 
+```
 
 Test Docker is working
+```
     sudo docker run hello-world
+```
 
 ## 5. Decommission
 ```
