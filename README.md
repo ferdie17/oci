@@ -204,6 +204,7 @@ Update the Ansible variables (kafka.yml) if required.
 
 ## 4. Test
 ###   4.1 Kafka
+
     Switch to default directory
 
 ```    
