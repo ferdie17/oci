@@ -198,14 +198,16 @@ Update the Ansible variables (kafka.yml) if required.
 ```
 
 ####        3.4.2 Docker
+```
   ansible-playbook -i inventory docker.yml
+```
 
 ## 4. Test
 ###   4.1 Kafka
 
 Switch to default directory
 
-    cd /opt/kafka
+cd /opt/kafka
 
 Create a Kafka topic
     bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic testTopic
