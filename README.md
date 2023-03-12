@@ -142,11 +142,13 @@ Add the host IP address to Ansible Inventory File.
 ```
 ####        3.1.2 Docker
 ```
+    $ cat inventory 
     [docker]
     140.238.204.131
 ```
 
-###   3.2 Playbook (kafka.yml)
+###   3.2 Playbook 
+####       3.2.1 (kafka.yml)
 The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
   NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
@@ -164,6 +166,18 @@ The Ansible playbook is defined to do the following:
 - Create a Service files for ZooKeeper and Kafka
 - Start Services for ZooKeeper and Kafka
 - Validate ZooKeeper and Kafka are listening on their respective ports (2181 and 9092)
+
+####       3.2.2 (docker.yml)
+The Ansible playbook is defined to do the following:
+- Update all packages to the latest version.
+  NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
+- Install yum-utils
+- Add Docker Yum Repo
+- Install Docker packages
+- Start and Enable Docker server
+- Make user 'opc' a member of group 'docker'
+
+
 
 ###   3.3 Update the Playbook avariables if required.
 Update the Ansible variables (kafka.yml) if required.
