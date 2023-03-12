@@ -188,6 +188,7 @@ Update the Ansible variables (kafka.yml) if required.
     kafka_src:   "https://downloads.apache.org/kafka/3.4.0/kafka_2.13-3.4.0.tgz"
     jdk_version: 1.8.0
 ```
+
 ####        3.3.2 Docker
 
 ###   3.4 Execute the Ansible playbook
@@ -195,6 +196,7 @@ Update the Ansible variables (kafka.yml) if required.
 ```
   ansible-playbook -i inventory kafka.yml
 ```
+
 ####        3.4.2 Docker
 ```
   ansible-playbook -i inventory docker.yml
@@ -203,6 +205,7 @@ Update the Ansible variables (kafka.yml) if required.
 ## 4. Test
 ###   4.1 Kafka
     Switch to default directory
+
 ```    
     cd /opt/kafka
 ```
