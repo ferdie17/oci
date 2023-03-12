@@ -7,11 +7,13 @@ Make use of Oracle Free VMs to test MW apps.
 1. Set up your free Oracle Account
 2. Provision VM (via Terraform)
 3. Deployment   (via Ansible)
-
-   3.1 Kafka
+   3.1 Inventory
+       3.1.1 Kafka
+       3.1.2 Docker 
 4. Test
 
    4.1 Kafka
+   4.2 Docker
 5. Decommission
 6. References
 7. Notes
@@ -132,13 +134,17 @@ Applying Terraform 'main.tf' file will perform the following:
 ## 3. Deployment (via Ansible)
 ###   3.1 Inventory
 Add the host IP address to Ansible Inventory File.
+####        3.1.1 Kafka
 ```
     $ cat inventory 
     [kafka]
     140.238.199.73
 ```
+####        3.1.2 Docker
+    [docker]
+    140.238.204.131
 
-###   3.3 Playbook (kafka.yml)
+###   3.2 Playbook (kafka.yml)
 The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
   NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
@@ -195,6 +201,7 @@ Update the Ansible variables (kafka.yml) if required.
 ## 6. References
 - https://kafka.apache.org/quickstart
 - https://tecadmin.net/install-apache-kafka-centos-8/
+- https://geekscircuit.com/how-to-install-docker-on-oracle-linux-8-7/
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.

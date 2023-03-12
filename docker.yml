@@ -1,0 +1,40 @@
+---
+  - name:        Install Docker
+    hosts:       docker
+    become:      yes
+    become_user: root
+    remote_user: opc
+    tasks:
+##      - name: Update all packages to the latest version.
+##        ansible.builtin.yum:
+##          name:                     '*'
+##          state:                    latest
+      - name: Install yum-utils
+        ansible.builtin.yum:
+          name:                     "yum-utils"
+          state:                    installed
+      - name: Add Docker YUM Repo
+        become:                     yes
+        shell:
+                                    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+##      - name: Update all packages to the latest version.
+##        ansible.builtin.yum:
+##          name:                     '*'
+##          state:                    latest
+      - name: Install Docker packages
+        ansible.builtin.yum:
+          name:
+            - docker-ce 
+            - docker-ce-cli 
+            - containerd.io
+          state: present
+      - name: Start Docker service
+        ansible.builtin.service:
+          name:                       docker
+          state:                      started
+          enabled:                    yes
+      - name: Modify the user 'opc' by  appending the group 'doccker' to the user's groups
+        ansible.builtin.user:
+          name:                       opc
+          groups:                     docker
+          append:                     yes
