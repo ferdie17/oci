@@ -141,8 +141,10 @@ Add the host IP address to Ansible Inventory File.
     140.238.199.73
 ```
 ####        3.1.2 Docker
+```
     [docker]
     140.238.204.131
+```
 
 ###   3.2 Playbook (kafka.yml)
 The Ansible playbook is defined to do the following:
