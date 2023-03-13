@@ -9,10 +9,12 @@ Make use of Oracle Free VMs to test MW apps.
 3. Deployment   (via Ansible)
    3.1 Inventory
        3.1.1 Kafka
+
        3.1.2 Docker 
 4. Test
 
    4.1 Kafka
+
    4.2 Docker
 5. Decommission
 6. References
@@ -248,6 +250,9 @@ Test Docker is working
 - https://kafka.apache.org/quickstart
 - https://tecadmin.net/install-apache-kafka-centos-8/
 - https://geekscircuit.com/how-to-install-docker-on-oracle-linux-8-7/
+- https://docs.ansible.com/ansible/latest/collections/community/docker/
+- https://docs.ansible.com/ansible/2.9/modules/docker_container_module.html
+- https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.

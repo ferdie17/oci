@@ -93,6 +93,24 @@ resource "oci_core_security_list" "security_list" {
     }
   }
   ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "Port 1521"
+    tcp_options {
+      min = "1521"
+      max = "1521"
+    }
+  }
+  ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "Port 8080"
+    tcp_options {
+      min = "8080"
+      max = "8080"
+    }
+  }
+  ingress_security_rules {
     protocol    = "17"
     source      = "0.0.0.0/0"
     description = "Mosh"
