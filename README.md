@@ -148,6 +148,11 @@ Add the host IP address to Ansible Inventory File.
 ```
 
 ###   3.2 Playbook 
+From CloudShell, install the Docker community Galaxy collection.
+```
+    ansible-galaxy collection install community.docker
+```
+
 ####       3.2.1 (kafka.yml)
 The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
