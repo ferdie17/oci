@@ -148,10 +148,6 @@ Add the host IP address to Ansible Inventory File.
 ```
 
 ###   3.2 Playbook 
-From CloudShell, install the Docker community Galaxy collection.
-```
-    ansible-galaxy collection install community.docker
-```
 
 ####       3.2.1 (kafka.yml)
 The Ansible playbook is defined to do the following:
@@ -255,3 +251,8 @@ Test Docker is working
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.
+- From CloudShell, ensure the Docker community Galaxy collection is installed.
+```
+    ansible-galaxy collection install community.docker
+```
+
