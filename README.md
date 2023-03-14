@@ -92,19 +92,19 @@ The file should reside outside of the git repo directory, so that it does not ge
   . ~/tfvarsenv.sh
 ```
 
-### 2.3 Download the Terraform provider(s).
+### 2.4 Download the Terraform provider(s).
 
 ```
   terraform init
 ```
 
-### 2.4 Perform Terraform pre-checks
+### 2.5 Perform Terraform pre-checks
 
 ```
   terraform plan
 ```
 
-### 2.4 Executre Terraform Actions and take of the 'compute_instance_ip' IP address (this is the VM's IP Address)
+### 2.6 Executre Terraform Actions and take of the 'compute_instance_ip' IP address (this is the VM's IP Address)
 
 ```
   terraform apply --auto-approve
@@ -131,7 +131,7 @@ Applying Terraform 'main.tf' file will perform the following:
 - Create resource "tls_private_key" "compute_ssh_key".
 - Create resource "oci_core_instance" "instance".
 
-### 2.5 Confirm that the VM is up and running.
+### 2.7 Confirm that the VM is up and running.
 
 ```
   ssh opc@140.238.199.73
@@ -206,9 +206,9 @@ Update the Ansible variables (kafka.yml) if required.
 
 ####        3.3.2 Docker
 
-####        3.3.3 Docker-Oracle-XE
+#####           3.3.2.1 Docker-Oracle-XE
 
-####        3.3.4 Docker-Mysql
+#####           3.3.2.2 Docker-Mysql
 
 ###   3.4 Execute the Ansible playbook
 ####        3.4.1 Kafka
@@ -221,12 +221,12 @@ Update the Ansible variables (kafka.yml) if required.
   ansible-playbook -i inventory docker.yml
 ```
 
-####        3.4.3 Dockerized Oracle XE
+#####            3.4.2.1 Dockerized Oracle XE
 ```
   ansible-playbook -i inventory docker-oracle-xe.yml
 ```
 
-####        3.4.4 Dockerized MySQL
+#####            3.4.2.2 Dockerized MySQL
 ```
   ansible-playbook -i inventory docker-mysql.yml
 ```
@@ -268,7 +268,7 @@ Test Docker is working
     sudo docker run hello-world
 ```
 
-###   4.3 Dockerized Oracle XE
+####       4.2.1 Dockerized Oracle XE
 Log in to VM and start the dockerized Oracle XE instance
 ```
     ssh opc@192.9.173.95
@@ -301,7 +301,7 @@ Checkout APEX
     ADMIN/admin
 ```
 
-###   4.4 Dockerized MySQL
+####       4.2.2 Dockerized MySQL
 Log in to VM and start the dockerized MySQL instance
 ```
     ssh opc@192.9.173.95
