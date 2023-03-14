@@ -8,11 +8,11 @@ Make use of Oracle Free VMs to test MW apps.
 2. Provision VM (via Terraform)
 3. Deployment   (via Ansible)
 
-###    3.1 Inventory
+   3.1 Inventory
 
-####        3.1.1 Kafka
+       3.1.1 Kafka
 
-####        3.1.2 Docker 
+       3.1.2 Docker 
 
 4. Test
 
