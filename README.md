@@ -186,6 +186,9 @@ The Ansible playbook is defined to do the following:
 - Start and Enable Docker server
 - Make user 'opc' a member of group 'docker'
 
+####       3.2.3 (docker-oracle-xe.yml)
+The Ansible playbook is defined to do the following:
+- Start/Run the docker image oracleinanutshell/oracle-xe-11g
 
 
 ###   3.3 Update the Playbook avariables 
