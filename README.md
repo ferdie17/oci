@@ -253,6 +253,7 @@ Test Docker is working
 - https://docs.ansible.com/ansible/latest/collections/community/docker/
 - https://docs.ansible.com/ansible/2.9/modules/docker_container_module.html
 - https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g
+- https://relentlesscoding.com/posts/oracle-sqlplus-cheatsheet/
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.
