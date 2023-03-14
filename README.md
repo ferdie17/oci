@@ -157,7 +157,7 @@ Add the host IP address to Ansible Inventory File.
 
 ###   3.2 Playbook 
 
-####       3.2.1 (kafka.yml)
+####       3.2.1 Kafka (kafka.yml)
 The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
   NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
@@ -176,7 +176,7 @@ The Ansible playbook is defined to do the following:
 - Start Services for ZooKeeper and Kafka
 - Validate ZooKeeper and Kafka are listening on their respective ports (2181 and 9092)
 
-####       3.2.2 (docker.yml)
+####       3.2.2 Docker (docker.yml)
 The Ansible playbook is defined to do the following:
 - Update all packages to the latest version.
   NOTE: this is commented out by default in order to speed up builds.  Uncomment if appropriate.
@@ -186,7 +186,7 @@ The Ansible playbook is defined to do the following:
 - Start and Enable Docker server
 - Make user 'opc' a member of group 'docker'
 
-####       3.2.3 (docker-oracle-xe.yml)
+####       3.2.3 Dockerized Oracle XE (docker-oracle-xe.yml)
 The Ansible playbook is defined to do the following:
 - Start/Run the docker image oracleinanutshell/oracle-xe-11g
 
@@ -203,6 +203,8 @@ Update the Ansible variables (kafka.yml) if required.
 
 ####        3.3.2 Docker
 
+####        3.3.2 Docker-Oracle-XE
+
 ###   3.4 Execute the Ansible playbook
 ####        3.4.1 Kafka
 ```
@@ -212,6 +214,11 @@ Update the Ansible variables (kafka.yml) if required.
 ####        3.4.2 Docker
 ```
   ansible-playbook -i inventory docker.yml
+```
+
+####        3.4.3 Dockerized Oracle XE
+```
+  ansible-playbook -i inventory docker-oracle-xe.yml
 ```
 
 ## 4. Test
@@ -250,6 +257,46 @@ Test Docker is working
     sudo docker run hello-world
 ```
 
+###   4.3 Dockerized Oracle XE
+Log in to VM and start the dockerized Oracle XE instance
+```
+    ssh opc@192.9.173.95
+    sudo docker exec -it oracle_xe /bin/bash
+```
+
+From the Unix shell, check the setup.
+```
+    ps -ef | grep ora
+    lsnrctl status
+    tnsping XE
+```
+
+Use 'sqlplus' to perform queries (sqlplus pwd is 'sys/oracle')
+```
+   sqlplus sys as sysdba
+   select name from v$datafile union select name from v$tempfile;
+   select name from v$database;
+   show user;
+   select username from dba_users;
+   select table from all_tables;
+   SELECT * FROM USER_SYS_PRIVS;
+   SELECT * FROM USER_TAB_PRIVS;
+   SELECT * FROM USER_ROLE_PRIVS;
+```
+
+Checkout APEX
+```
+    http://140.238.204.131/apex/apex_admin
+    ADMIN/admin
+```
+
+
+
+
+
+
+
+
 ## 5. Decommission
 ```
   terraform destroy --auto-approve
@@ -266,7 +313,7 @@ Test Docker is working
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.
-- From CloudShell, ensure the Docker community Galaxy collection is installed.
+- From CloudShell, install Docker community Galaxy collection
 ```
     ansible-galaxy collection install community.docker
 ```
