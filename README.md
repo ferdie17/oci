@@ -192,6 +192,9 @@ The Ansible playbook is defined to do the following:
 The Ansible playbook is defined to do the following:
 - Start/Run the docker image oracleinanutshell/oracle-xe-11g
 
+####       3.2.4 Dockerized MySQL (docker-mysql.yml)
+The Ansible playbook is defined to do the following:
+- Start/Run the docker image mysql/mysql-server
 
 ###   3.3 Update the Playbook avariables 
 ####        3.3.1 Kafka
@@ -205,7 +208,9 @@ Update the Ansible variables (kafka.yml) if required.
 
 ####        3.3.2 Docker
 
-####        3.3.2 Docker-Oracle-XE
+####        3.3.3 Docker-Oracle-XE
+
+####        3.3.4 Docker-Mysql
 
 ###   3.4 Execute the Ansible playbook
 ####        3.4.1 Kafka
@@ -222,6 +227,12 @@ Update the Ansible variables (kafka.yml) if required.
 ```
   ansible-playbook -i inventory docker-oracle-xe.yml
 ```
+
+####        3.4.4 Dockerized MySQL
+```
+  ansible-playbook -i inventory docker-mysql.yml
+```
+
 
 ## 4. Test
 ###   4.1 Kafka
@@ -292,6 +303,19 @@ Checkout APEX
     ADMIN/admin
 ```
 
+###   4.4 Dockerized MySQL
+Log in to VM and start the dockerized MySQL instance
+```
+    ssh opc@192.9.173.95
+    sudo docker exec -it mysql-server /bin/bash
+```
+
+From the Unix shell, check the setup (password is 'mysql').
+```
+    echo "show databases;" | mysql -u root -p
+```
+
+
 
 
 
@@ -312,6 +336,7 @@ Checkout APEX
 - https://docs.ansible.com/ansible/2.9/modules/docker_container_module.html
 - https://hub.docker.com/r/oracleinanutshell/oracle-xe-11g
 - https://relentlesscoding.com/posts/oracle-sqlplus-cheatsheet/
+- https://github.com/oracle/docker-images
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.

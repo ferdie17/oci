@@ -95,10 +95,19 @@ resource "oci_core_security_list" "security_list" {
   ingress_security_rules {
     protocol    = "6"
     source      = "0.0.0.0/0"
-    description = "Port 1521"
+    description = "Port 1521 - Oracle"
     tcp_options {
       min = "1521"
       max = "1521"
+    }
+  }
+  ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "Port 3306 - MySQL"
+    tcp_options {
+      min = "3306"
+      max = "3306"
     }
   }
   ingress_security_rules {

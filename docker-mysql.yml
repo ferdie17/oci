@@ -1,5 +1,5 @@
 ---
-- name:        Install Dockerised Oracle XE
+- name:        Install Dockerised MySQL
   hosts:       docker
   become:      yes
   become_user: root
@@ -7,9 +7,10 @@
   tasks:
   - name: Start a container
     docker_container:
-      name:  oracle_xe
-      image: oracleinanutshell/oracle-xe-11g
+      name:  mysql-server
+      image: mysql/mysql-server
       state: started
       ports:
-        - "1521:1521"
-        - "8080:8080"
+        - "3306:3306"
+      env:
+        MYSQL_ROOT_PASSWORD: mysql
