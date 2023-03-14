@@ -10,15 +10,18 @@ Make use of Oracle Free VMs to test MW apps.
 
    3.1 Inventory
 
-       3.1.1 Kafka
+   3.2 Playbook 
 
-       3.1.2 Docker 
+   3.3 Update the Playbook avariables 
+
+   3.4 Execute the Ansible playbook
 
 4. Test
 
    4.1 Kafka
 
    4.2 Docker
+
 5. Decommission
 6. References
 7. Notes
