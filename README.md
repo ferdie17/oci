@@ -22,7 +22,7 @@ Make use of Oracle Free VMs to test MW/DB apps.
 
    4.2 Docker
    
-   4.2 Dockerised Oracle XE
+   4.3 Dockerised Oracle XE
 
 5. Decommission
 6. References
