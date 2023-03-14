@@ -22,8 +22,6 @@ Make use of Oracle Free VMs to test MW/DB apps.
 
    4.2 Docker
    
-   4.3 Dockerised Oracle XE
-
 5. Decommission
 6. References
 7. Notes
@@ -188,11 +186,11 @@ The Ansible playbook is defined to do the following:
 - Start and Enable Docker server
 - Make user 'opc' a member of group 'docker'
 
-####       3.2.3 Dockerized Oracle XE (docker-oracle-xe.yml)
+#####           3.2.2.1 Dockerized Oracle XE (docker-oracle-xe.yml)
 The Ansible playbook is defined to do the following:
 - Start/Run the docker image oracleinanutshell/oracle-xe-11g
 
-####       3.2.4 Dockerized MySQL (docker-mysql.yml)
+#####           3.2.2.2 Dockerized MySQL (docker-mysql.yml)
 The Ansible playbook is defined to do the following:
 - Start/Run the docker image mysql/mysql-server
 
