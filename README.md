@@ -1,7 +1,7 @@
 # OCI (Oracle Cloud Infrastructure)
 
 ## OBJECTIVE:
-Make use of Oracle Free VMs to test MW apps.
+Make use of Oracle Free VMs to test MW/DB apps.
 
 ## SECTIONS:
 1. Set up your free Oracle Account
@@ -21,6 +21,8 @@ Make use of Oracle Free VMs to test MW apps.
    4.1 Kafka
 
    4.2 Docker
+   
+   4.2 Dockerised Oracle XE
 
 5. Decommission
 6. References
