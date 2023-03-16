@@ -120,6 +120,15 @@ resource "oci_core_security_list" "security_list" {
     }
   }
   ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "Port 8081 - Mongo Express"
+    tcp_options {
+      min = "8081"
+      max = "8081"
+    }
+  }
+  ingress_security_rules {
     protocol    = "17"
     source      = "0.0.0.0/0"
     description = "Mosh"

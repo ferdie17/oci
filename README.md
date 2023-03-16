@@ -338,8 +338,9 @@ From the Unix shell, check the setup (password is 'mysql').
 
 ## 7. Notes
 - Terraform and Ansible are pre-installed on Oracle Cloud Shell.
-- From CloudShell, install Docker community Galaxy collection
+- From CloudShell, install Docker community Galaxy collections
 ```
     ansible-galaxy collection install community.docker
+    ansible-galaxy install adnanhodzic.docker-compose`
 ```
 

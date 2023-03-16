@@ -1,0 +1,21 @@
+---
+- name:        Install Dockerised Jira
+  hosts:       docker
+  become:      yes
+  become_user: root
+  remote_user: opc
+  tasks:
+  - name: Create a volume
+    docker_volume:
+      name: jiraVolume
+  - name: Start a container
+    docker_container:
+      name:  jira
+      image: atlassian/jira-software
+      state: started
+      ports:
+        - "8080:8080"
+      mounts:
+        - type: volume
+          source: jiraVolume
+          target: /var/atlassian/application-data/jira 
